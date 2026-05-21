@@ -12,11 +12,11 @@
     <!-- Dark mode favicon -->
     <link rel="icon" href="./assets/images/logo/favicon (white).ico" media="(prefers-color-scheme: dark)" />
 
-    <!-- Google fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" />
-
     <!-- Locomotive Scroll -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
+
+    <!-- Google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" />
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
@@ -40,7 +40,7 @@
             </div>
 
             <div id="icons">
-                <span class="material-symbols-rounded">
+                <span id="menuBar" class="material-symbols-rounded">
                     equal
                 </span>
 
@@ -51,12 +51,46 @@
         </div>
     </nav>
 
+    <!-- Menu Overlay -->
+    <!-- Menu Overlay -->
+    <div id="menu-overlay">
+        <!-- Main menu links (Right aligned) -->
+        <div id="menu-content">
+            <div class="menu-link-wrapper"><a class="menu-link" href="">Shop</a></div>
+            <div class="menu-link-wrapper"><a class="menu-link" href="">Running</a></div>
+            <div class="menu-link-wrapper"><a class="menu-link" href="">Training</a></div>
+            <div class="menu-link-wrapper"><a class="menu-link" href="">Football</a></div>
+            <div class="menu-link-wrapper"><a class="menu-link" href="">Join Us</a></div>
+        </div>
+
+        <!-- Footer Columns (Bottom left aligned) -->
+        <div id="menu-footer">
+            <div class="menu-footer-col">
+                <h4>Connect With Us</h4>
+                <a href="">Instagram</a>
+                <a href="">YouTube</a>
+                <a href="">Nike App</a>
+            </div>
+            <div class="menu-footer-col">
+                <h4>Nitty Gritties</h4>
+                <a href="">Orders</a>
+                <a href="">Delivery</a>
+                <a href="">Returns</a>
+            </div>
+            <div class="menu-footer-col">
+                <h4>Get Started</h4>
+                <a href="">Member benefits</a>
+                <a href="">Sustainability</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Cursor -->
     <div id="cursor"></div>
 
     <!-- Main Container -->
-    <div id="main">
-        <div id="page1">
+    <div id="main" data-scroll-container>
+        <div id="page1" data-scroll-section>
             <!-- Hero title -->
             <div id="page1-part1">
                 <h1> Move </h1>
@@ -64,16 +98,24 @@
             </div>
 
             <!-- Hero video -->
-            <div id="video-container">
+            <div data-scroll data-scroll-speed="1" id="video-container">
                 <video autoplay muted loop src="./assets/video/video.mp4"></video>
             </div>
         </div>
 
-        <div id="page2"></div>
+        <div id="page2" data-scroll-section></div>
     </div>
 
     <!-- Scripts -->
+
+    <!-- Locomotive Scroll -->
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Custom Script -->
     <script src="script.js"></script>
 
 </body>
