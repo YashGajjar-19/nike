@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
 
     <!-- Google fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
@@ -40,11 +40,11 @@
             </div>
 
             <div id="icons">
-                <span id="menuBar" class="material-symbols-rounded">
+                <span id="menuBar" class="material-symbols-sharp">
                     equal
                 </span>
 
-                <span class="material-symbols-rounded">
+                <span class="material-symbols-sharp">
                     shopping_cart
                 </span>
             </div>
@@ -52,15 +52,38 @@
     </nav>
 
     <!-- Menu Overlay -->
-    <!-- Menu Overlay -->
     <div id="menu-overlay">
         <!-- Main menu links (Right aligned) -->
         <div id="menu-content">
-            <div class="menu-link-wrapper"><a class="menu-link" href="">Shop</a></div>
-            <div class="menu-link-wrapper"><a class="menu-link" href="">Running</a></div>
-            <div class="menu-link-wrapper"><a class="menu-link" href="">Training</a></div>
-            <div class="menu-link-wrapper"><a class="menu-link" href="">Football</a></div>
-            <div class="menu-link-wrapper"><a class="menu-link" href="">Join Us</a></div>
+            <div class="menu-link-wrapper">
+                <a class="menu-link" href="">
+                    Shop
+                </a>
+            </div>
+
+            <div class="menu-link-wrapper">
+                <a class="menu-link" href="">
+                    Running
+                </a>
+            </div>
+
+            <div class="menu-link-wrapper">
+                <a class="menu-link" href="">
+                    Training
+                </a>
+            </div>
+
+            <div class="menu-link-wrapper">
+                <a class="menu-link" href="">
+                    Football
+                </a>
+            </div>
+
+            <div class="menu-link-wrapper">
+                <a class="menu-link" href="">
+                    Join Us
+                </a>
+            </div>
         </div>
 
         <!-- Footer Columns (Bottom left aligned) -->
@@ -89,8 +112,8 @@
     <div id="cursor"></div>
 
     <!-- Main Container -->
-    <div id="main" data-scroll-container>
-        <div id="page1" data-scroll-section>
+    <div id="main">
+        <div id="page1">
             <!-- Hero title -->
             <div id="page1-part1">
                 <h1> Move </h1>
@@ -98,12 +121,32 @@
             </div>
 
             <!-- Hero video -->
-            <div data-scroll data-scroll-speed="1" id="video-container">
-                <video autoplay muted loop src="./assets/video/video.mp4"></video>
+            <div id="video-container">
+                <div id="play">
+                    PLAY
+                </div>
+
+                <video data-scroll data-scroll-speed="-2" autoplay muted loop src="./assets/video/video.mp4"></video>
             </div>
         </div>
 
-        <div id="page2" data-scroll-section></div>
+        <section id="intro" aria-label="Nike collection introduction">
+            <h2>
+                Introducing the Nike performance edit for every athlete in motion.
+            </h2>
+
+            <p>
+                Built around speed, control, recovery and everyday confidence.
+            </p>
+
+            <a href="">Shop Nike today.</a>
+        </section>
+
+        <div id="page2">
+
+        </div>
+
+
     </div>
 
     <!-- Scripts -->

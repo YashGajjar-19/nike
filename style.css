@@ -1,16 +1,16 @@
 @font-face {
   font-family: futura;
-  src: url(../assets/fonts/Futura-Bold.ttf);
+  src: url(./assets/fonts/Futura-Bold.ttf);
 }
 
 @font-face {
   font-family: halvetica;
-  src: url(../assets/fonts/HelveticaNowText-Regular.ttf);
+  src: url(./assets/fonts/HelveticaNowText-Regular.ttf);
 }
 
 @font-face {
   font-family: abc;
-  src: url(../assets/fonts/ABCSocialMono-Regular.ttf);
+  src: url(./assets/fonts/ABCSocialMono-Regular.ttf);
 }
 
 * {
@@ -23,8 +23,11 @@ html,
 body {
   width: 100%;
   height: 100%;
-  background-color: #f7f7f7;
   overflow: hidden;
+  background-color: #f7f7f7;
+  font-family: "futura", "halvetica", "abc", sans-serif;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 *::selection {
@@ -45,13 +48,13 @@ body {
 }
 
 #navleft {
-  height: 65px;
-  width: 120px;
+  height: 60px;
+  width: 100px;
   overflow: hidden;
 }
 
 #navbar #navleft img {
-  height: 65px;
+  height: 100%;
   width: 100%;
   display: block;
   object-fit: contain;
@@ -107,21 +110,21 @@ body {
 }
 
 #navbar #icons {
-  min-width: 140px;
-  height: 45px;
+  min-width: 125px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 15px;
+  padding: 0px 10px;
   background-color: #f7f7f7;
   border-radius: 50px;
   cursor: pointer;
 }
 
 #navbar #icons span {
-  font-size: 25px;
-  font-weight: 200;
-  color: rgba(0, 0, 0, 0.8);
+  font-size: 20px;
+  font-weight: 100;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 /* Menu Overlay */
@@ -170,7 +173,7 @@ body {
   cursor: pointer;
   position: relative;
   transform: translateY(100%);
-  transition: color 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: all 0.3s ease-in-out;
   padding-bottom: 8px;
 }
 
@@ -184,7 +187,7 @@ body {
   background-color: #ffffff;
   transform: scaleX(0);
   transform-origin: right;
-  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: all 0.3s ease-in-out;
 }
 
 .menu-link:hover::after {
@@ -199,6 +202,7 @@ body {
   align-items: flex-end;
   margin-top: auto;
 }
+
 .menu-footer-col {
   display: flex;
   flex-direction: column;
@@ -215,6 +219,7 @@ body {
   font-weight: 400;
   margin-bottom: 5px;
 }
+
 .menu-footer-col a {
   font-family: abc, sans-serif;
   font-size: clamp(12px, 0.9vw, 16px);
@@ -223,6 +228,7 @@ body {
   font-weight: 100;
   transition: color 0.2s ease;
 }
+
 .menu-footer-col a:hover {
   color: rgba(255, 255, 255, 0.6);
 }
@@ -232,17 +238,18 @@ body {
   min-height: 100vh;
   width: 100%;
   position: relative;
-  padding: 10vh 1.5vw;
-  margin-top: 180px;
+  padding: 18vh 2vw;
+  padding-bottom: 0;
+  margin-top: 100px;
 }
 
 #page1 h1 {
   font-family: futura;
-  font-size: 14.8vw;
-  font-weight: 100;
-  line-height: 0.9;
-  letter-spacing: 0;
+  font-size: 14.324rem;
+  font-weight: 500;
+  line-height: 0.84;
   text-transform: uppercase;
+  letter-spacing: 0;
 }
 
 #video-container {
@@ -260,7 +267,140 @@ body {
   object-position: center;
 }
 
+#video-container #play {}
+
+#intro {
+  min-height: 70vh;
+  width: 100%;
+  padding: 1rem 8vw;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#intro h2 {
+  width: 75%;
+  font-family: futura;
+  font-size: 4.2rem;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+#intro p {
+  margin-top: 2rem;
+  font-family: halvetica;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+#intro a,
+#mission a,
+#impact a {
+  width: fit-content;
+  margin-top: 1.5rem;
+  font-family: abc;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #111;
+  padding-bottom: 2px;
+  border-bottom: 1px solid black;
+}
+
 #page2 {
   min-height: 100vh;
   width: 100%;
+}
+
+@media (max-width: 600px) {
+  #navbar {
+    width: 100%;
+    padding: 3vw 5vw;
+  }
+
+  #navleft {
+    height: 40px;
+    width: 75px;
+    overflow: hidden;
+  }
+
+  #navbar #navleft img {
+    height: 100%;
+    width: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: top left;
+  }
+
+  #navbar #links {
+    display: none;
+  }
+
+  #navbar #icons {
+    min-width: 100px;
+    height: 35px;
+    padding: 2px 5px;
+  }
+
+  #navbar #icons span {
+    font-size: 20px;
+    font-weight: 100;
+  }
+
+  #menu-overlay {
+    padding: 4vh 8vw;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+
+  #menu-content {
+    gap: 1vh;
+  }
+
+  .menu-link {
+    font-size: 12vw;
+    padding-bottom: 5px;
+  }
+
+  #menu-footer {
+    gap: 8vw;
+    margin-top: 45px;
+  }
+
+  #page1 {
+    min-height: 60vh;
+    padding: 0 2vw;
+    margin-top: 140px;
+  }
+
+  #page1 h1 {
+    font-size: 14.8vw;
+  }
+
+  #video-container {
+    height: 32vh;
+  }
+
+  #intro {
+    min-height: 40vh;
+    width: 100%;
+    padding: 1rem 8vw;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  #intro h2 {
+    width: 90%;
+    font-size: 8vw;
+  }
 }

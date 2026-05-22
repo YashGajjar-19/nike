@@ -45,7 +45,6 @@ function locomotiveAnimations() {
 
   return locoScroll;
 }
-
 const locoScroll = locomotiveAnimations();
 
 function navbarAnimation() {
@@ -74,7 +73,6 @@ function navbarAnimation() {
     },
   });
 }
-
 navbarAnimation();
 
 function loadAnimation() {
@@ -110,7 +108,6 @@ function loadAnimation() {
       "-=0.35"
     );
 }
-
 loadAnimation();
 
 function revealAnimation(selector, trigger, options) {
@@ -128,6 +125,7 @@ function revealAnimation(selector, trigger, options) {
     },
   });
 }
+revealAnimation();
 
 function scrollRevealAnimations() {
   revealAnimation("#intro h2, #intro p, #intro a", "#intro", {
@@ -181,7 +179,6 @@ function scrollRevealAnimations() {
     start: "top 78%",
   });
 }
-
 scrollRevealAnimations();
 
 function videoconAnimation() {
@@ -238,7 +235,6 @@ function videoconAnimation() {
     moveY(event.clientY);
   });
 }
-
 videoconAnimation();
 
 function cardHoverAnimation() {
@@ -269,7 +265,6 @@ function cardHoverAnimation() {
     });
   });
 }
-
 cardHoverAnimation();
 
 function cursorAnimation() {
@@ -319,7 +314,6 @@ function cursorAnimation() {
     });
   });
 }
-
 cursorAnimation();
 
 function messageAnimation() {
@@ -350,5 +344,4 @@ function messageAnimation() {
     });
   });
 }
-
 messageAnimation();

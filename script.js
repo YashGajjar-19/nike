@@ -4,10 +4,10 @@ function locoAnimations() {
   const locoScroll = new LocomotiveScroll({
     el: document.querySelector("#main"),
     smooth: true,
+    scrollbar: false,
     lerp: 0.075,
     multiplier: 1,
     smartphone: { smooth: true },
-    tablet: { smooth: true },
     tablet: { smooth: true },
   });
   locoScroll.on("scroll", ScrollTrigger.update);
@@ -35,6 +35,9 @@ function locoAnimations() {
   ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
 
   ScrollTrigger.refresh();
+  window.addEventListener("load", () => {
+    ScrollTrigger.refresh();
+  });
 }
 locoAnimations();
 
@@ -161,3 +164,8 @@ function navbarAnimation() {
   });
 }
 navbarAnimation();
+
+function videoconAnimation() {
+
+}
+videoconAnimation();
