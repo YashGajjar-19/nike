@@ -5,10 +5,6 @@ function locoAnimations() {
     el: document.querySelector("#main"),
     smooth: true,
     scrollbar: false,
-    lerp: 0.075,
-    multiplier: 1,
-    smartphone: { smooth: true },
-    tablet: { smooth: true },
   });
   locoScroll.on("scroll", ScrollTrigger.update);
 
@@ -166,6 +162,137 @@ function navbarAnimation() {
 navbarAnimation();
 
 function videoconAnimation() {
+  var videocon = document.querySelector("#video-container");
+  var playbtn = document.querySelector("#play");
 
+  gsap.set(playbtn, { xPercent: -50, yPercent: -50 });
+
+  videocon.addEventListener("mouseenter", function () {
+    gsap.to(playbtn, {
+      scale: 1,
+      opacity: 1,
+    })
+  });
+
+  videocon.addEventListener("mouseleave", function () {
+    gsap.to(playbtn, {
+      scale: 0,
+      opacity: 0,
+    })
+  });
+
+  videocon.addEventListener("mousemove", function (dets) {
+    var rect = videocon.getBoundingClientRect();
+    gsap.to(playbtn, {
+      left: dets.clientX - rect.left,
+      top: dets.clientY - rect.top,
+    })
+  });
 }
 videoconAnimation();
+
+function loadAnimation() {
+  const tl = gsap.timeline({
+    defaults: {
+      ease: "power3.out",
+    },
+  });
+
+  tl.from("#nav", {
+    y: -36,
+    opacity: 0,
+    duration: 0.8,
+  })
+    .from(
+      "#page1 h1",
+      {
+        y: 120,
+        opacity: 0,
+        duration: 0.95,
+        stagger: 0.22,
+      },
+      "-=0.35"
+    )
+    .from(
+      "#page1 #video-container",
+      {
+        y: 50,
+        scale: 0.94,
+        opacity: 0,
+        duration: 0.75,
+      },
+      "-=0.35"
+    );
+}
+loadAnimation();
+
+function revealAnimation(selector, trigger, options) {
+  gsap.from(selector, {
+    y: options?.y ?? 80,
+    opacity: 0,
+    duration: options?.duration ?? 0.95,
+    stagger: options?.stagger ?? 0.12,
+    ease: options?.ease ?? "power3.out",
+    scrollTrigger: {
+      trigger,
+      scroller: "#main",
+      start: options?.start ?? "top 78%",
+      once: true,
+    },
+  });
+}
+
+// All scroll reveal animations
+function scrollRevealAnimations() {
+  revealAnimation("#intro h2, #intro p, #intro a", "#intro", {
+    y: 90,
+    stagger: 0.16,
+  });
+
+  revealAnimation("#page2 .elem", "#page2", {
+    y: 110,
+    stagger: 0.16,
+    start: "top 72%",
+  });
+
+  revealAnimation("#page2 .dets", "#page2", {
+    y: 28,
+    duration: 0.55,
+    stagger: 0.1,
+    start: "top 62%",
+  });
+
+  revealAnimation("#mission h2, .mission-copy p, .mission-copy a", "#mission", {
+    y: 85,
+    stagger: 0.13,
+  });
+
+  revealAnimation(".child", "#page3", {
+    y: 95,
+    stagger: 0.12,
+    start: "top 72%",
+  });
+
+  revealAnimation(
+    ".message-rule, .message-row article, #messages h2",
+    "#messages",
+    {
+      y: 75,
+      stagger: 0.1,
+      start: "top 74%",
+    }
+  );
+
+  revealAnimation(".impact-copy > *, .impact-image", "#impact", {
+    y: 85,
+    stagger: 0.14,
+    start: "top 72%",
+  });
+
+  revealAnimation(".footer-column, .footer-logo, .footer-legal, .footer-bottom p", "#footer", {
+    y: 70,
+    stagger: 0.12,
+    start: "top 78%",
+  });
+}
+scrollRevealAnimations();
