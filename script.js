@@ -4,6 +4,8 @@ function locoAnimations() {
   const locoScroll = new LocomotiveScroll({
     el: document.querySelector("#main"),
     smooth: true,
+    lerp: 0.06,
+    multiplier: 1,
     scrollbar: false,
   });
   locoScroll.on("scroll", ScrollTrigger.update);
@@ -242,7 +244,6 @@ function revealAnimation(selector, trigger, options) {
   });
 }
 
-// All scroll reveal animations
 function scrollRevealAnimations() {
   revealAnimation("#intro h2, #intro p, #intro a", "#intro", {
     y: 90,
@@ -296,3 +297,47 @@ function scrollRevealAnimations() {
   });
 }
 scrollRevealAnimations();
+
+function cursorAnimation() {
+  const cursor = document.querySelector("#cursor");
+  const canHover = window.matchMedia("(hover: hover)").matches;
+
+  if (!cursor || !canHover) return;
+
+  gsap.set(cursor, {
+    xPercent: -50,
+    yPercent: -50,
+    scale: 0,
+  });
+
+  const moveX = gsap.quickTo(cursor, "left", {
+    duration: 0.42,
+    ease: "power3.out",
+  });
+  const moveY = gsap.quickTo(cursor, "top", {
+    duration: 0.42,
+    ease: "power3.out",
+  });
+
+  document.addEventListener("mousemove", function (event) {
+    moveX(event.clientX);
+    moveY(event.clientY);
+  });
+
+  const colors = ["#e4e4e4ff"];
+
+  document.querySelectorAll(".child").forEach(function (child) {
+    child.addEventListener("mouseenter", function () {  
+      gsap.to("#cursor", { 
+        transform: "translate(-50%,-50%) scale(1)",
+      })
+    })
+
+    child.addEventListener("mouseleave", function () {
+      gsap.to("#cursor", { 
+        transform: "translate(-50%,-50%) scale(0)",
+      })
+    })
+  })
+}
+cursorAnimation();

@@ -42,7 +42,7 @@ body {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 1.5vw 1.7vw;
+  padding: 1.5vw 2vw;
   z-index: 99;
   transition: color 0.4s ease;
 }
@@ -233,6 +233,18 @@ body {
   color: rgba(255, 255, 255, 0.6);
 }
 
+#cursor {
+  height: 150px;
+  width: 150px;
+  background-color: #dbdbdbcd;
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%) scale(0);
+  pointer-events: none;
+  z-index: 9;
+  mix-blend-mode: multiply;
+}
+
 /* Main content */
 #page1 {
   min-height: 100vh;
@@ -318,6 +330,7 @@ body {
 #intro a,
 #mission a,
 #impact a {
+  display: inline-block;
   width: fit-content;
   margin-top: 1.5rem;
   font-family: abc;
@@ -347,7 +360,7 @@ body {
   border-bottom: 1px solid black;
 }
 
-#page2 #elem-title span{
+#page2 #elem-title span {
   font-family: halvetica;
   font-size: 0.8rem;
   font-weight: 100;
@@ -368,6 +381,10 @@ body {
   height: 100%;
   width: 31%;
   overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #page2 #elem-con .elem img {
@@ -378,10 +395,127 @@ body {
   scale: 1.1;
 }
 
-#page3 {
-  height: 100vh;
+.elem #dets {
+  height: 50px;
+  width: 70%;
+  position: absolute;
+  background-color: white;
+  border-radius: 50px;
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: center;
+  padding: 0 2vw;
+  gap: 20px;
+  z-index: 9;
+  font-family: abc;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.dot,
+.message-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #111;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.elem #dets span:nth-child(2) {
+  margin-right: 20px;
+}
+
+.elem #dets strong {
+  font-family: halvetica;
+  font-size: 0.88rem;
+}
+
+#mission {
   width: 100%;
-  background-color: #f5f5f5;
+  padding: 8vw 2vw;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8vw;
+}
+
+#mission h2 {
+  max-width: 850px;
+  font-family: futura;
+  font-size: 4.45rem;
+  font-weight: 500;
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.mission-copy {
+  max-width: 470px;
+  font-family: halvetica;
+  font-size: 1.08rem;
+  line-height: 1.45;
+}
+
+.mission-copy p+p {
+  margin-top: 1.6rem;
+}
+
+#page3 {
+  min-height: 110vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.child {
+  height: 60vh;
+  width: 40vw;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.child img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+  overflow: hidden;
+}
+
+.product-copy {
+  margin-top: 1.7rem;
+  text-align: center;
+  font-family: abc;
+  text-transform: uppercase;
+}
+
+.product-copy h3 {
+  margin-bottom: 0.75rem;
+  font-family: halvetica;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.product-copy p {
+  font-size: 0.78rem;
+}
+
+#page4 {
+  min-height: 100vh;
+  width: 100%;
+}
+
+#page5 {
+  min-height: 100vh;
+  width: 100%;
 }
 
 @media (max-width: 600px) {
@@ -443,32 +577,112 @@ body {
 
   #page1 {
     min-height: 60vh;
-    padding: 0 2vw;
-    margin-top: 140px;
+    padding: 0 3.5vw;
+    margin-top: 180px;
   }
 
   #page1 h1 {
-    font-size: 14.8vw;
+    font-size: 14.2vw;
   }
 
   #video-container {
-    height: 32vh;
+    height: 28vh;
+    margin-top: 15px;
   }
 
   #intro {
-    min-height: 40vh;
-    width: 100%;
-    padding: 1rem 8vw;
-    padding-bottom: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    padding: 1rem 10vw;
+    margin-top: -60px;
+    margin-bottom: 50px;
   }
 
   #intro h2 {
-    width: 90%;
-    font-size: 8vw;
+    width: 100%;
+    font-size: 10vw;
+  }
+
+  #page2 {
+    height: auto;
+    padding: 1vw 3.5vw;
+  }
+
+  #page2 #elem-title {
+    margin-bottom: 10px;
+  }
+
+  #page2 #elem-title span {
+    font-size: 0.7rem;
+  }
+
+  #page2 #elem-con {
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3vw;
+  }
+
+  #page2 #elem-con .elem {
+    height: 70vh;
+    width: 100%;
+  }
+
+  .elem #dets {
+    height: 45px;
+    width: 80%;
+    padding: 0 6vw;
+    font-size: 0.8rem;
+  }
+
+  .dot,
+  .message-dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  #mission {
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10vw 2vw;
+  }
+
+  #mission h2 {
+    text-align: center;
+    font-size: 2.2rem;
+  }
+
+  .mission-copy {
+    text-align: center;
+    padding: 2vw 4vw;
+    font-size: 1rem;
+  }
+
+  .mission-copy p+p {
+    margin-top: 1rem;
+  }
+
+  #page3 {
+    min-height: 80vh;
+  }
+
+  .child {
+    height: 30vh;
+    width: 38vw;
+    margin-bottom: 0px;
+  }
+
+  .product-copy h3 {
+    font-size: 0.8rem;
+  }
+
+  .product-copy p {
+    font-size: 0.8rem;
+  }
+
+  #cursor {
+    height: 100px;
+    width: 100px;
   }
 }
