@@ -6,7 +6,6 @@ function locoAnimations() {
     smooth: true,
     lerp: 0.06,
     multiplier: 1,
-    scrollbar: false,
   });
   locoScroll.on("scroll", ScrollTrigger.update);
 
@@ -163,36 +162,6 @@ function navbarAnimation() {
 }
 navbarAnimation();
 
-function videoconAnimation() {
-  var videocon = document.querySelector("#video-container");
-  var playbtn = document.querySelector("#play");
-
-  gsap.set(playbtn, { xPercent: -50, yPercent: -50 });
-
-  videocon.addEventListener("mouseenter", function () {
-    gsap.to(playbtn, {
-      scale: 1,
-      opacity: 1,
-    })
-  });
-
-  videocon.addEventListener("mouseleave", function () {
-    gsap.to(playbtn, {
-      scale: 0,
-      opacity: 0,
-    })
-  });
-
-  videocon.addEventListener("mousemove", function (dets) {
-    var rect = videocon.getBoundingClientRect();
-    gsap.to(playbtn, {
-      left: dets.clientX - rect.left,
-      top: dets.clientY - rect.top,
-    })
-  });
-}
-videoconAnimation();
-
 function loadAnimation() {
   const tl = gsap.timeline({
     defaults: {
@@ -200,7 +169,7 @@ function loadAnimation() {
     },
   });
 
-  tl.from("#nav", {
+  tl.from("#navbar", {
     y: -36,
     opacity: 0,
     duration: 0.8,
@@ -216,7 +185,7 @@ function loadAnimation() {
       "-=0.35"
     )
     .from(
-      "#page1 #video-container",
+      "#page1 #image-container",
       {
         y: 50,
         scale: 0.94,
