@@ -26,8 +26,7 @@ body {
   overflow: hidden;
   background-color: #f7f7f7;
   font-family: "futura", "halvetica", "abc", sans-serif;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  scroll-behavior: smooth;
 }
 
 *::selection {
