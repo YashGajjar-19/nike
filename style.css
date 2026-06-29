@@ -4,7 +4,7 @@
 }
 
 @font-face {
-  font-family: halvetica;
+  font-family: helvetica;
   src: url(./assets/fonts/HelveticaNowText-Regular.ttf);
 }
 
@@ -25,7 +25,7 @@ body {
   height: 100%;
   overflow: hidden;
   background-color: #f7f7f7;
-  font-family: "futura", "halvetica", "abc", sans-serif;
+  font-family: "futura", "helvetica", "abc", sans-serif;
   scroll-behavior: smooth;
 }
 
@@ -258,7 +258,7 @@ body {
   text-transform: uppercase;
   font-size: clamp(9rem, 18vw, 22rem);
   line-height: 0.82;
-  letter-spacing: -0.06em;
+  letter-spacing: 0;
   white-space: nowrap;
 }
 
@@ -300,7 +300,7 @@ body {
 
 #intro p {
   margin-top: 2rem;
-  font-family: halvetica;
+  font-family: helvetica;
   font-size: 1rem;
   line-height: 1;
 }
@@ -339,7 +339,7 @@ body {
 }
 
 #page2 #elem-title span {
-  font-family: halvetica;
+  font-family: helvetica;
   font-size: 0.8rem;
   font-weight: 100;
   text-transform: uppercase;
@@ -393,7 +393,9 @@ body {
   text-transform: uppercase;
 }
 
-.elem .dets:hover {
+.elem .dets:hover,
+.elem .dets:focus-within,
+.elem .dets.is-open {
   height: 305px;
   border-radius: 26px;
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.14);
@@ -423,7 +425,7 @@ body {
 }
 
 .elem .dets strong {
-  font-family: halvetica;
+  font-family: helvetica;
   font-size: 0.88rem;
 }
 
@@ -440,7 +442,9 @@ body {
   pointer-events: none;
 }
 
-.elem .dets:hover .shop-preview {
+.elem .dets:hover .shop-preview,
+.elem .dets:focus-within .shop-preview,
+.elem .dets.is-open .shop-preview {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
@@ -464,7 +468,7 @@ body {
 .shop-preview span {
   display: block;
   margin-top: 12px;
-  font-family: halvetica;
+  font-family: helvetica;
   font-size: 0.82rem;
   line-height: 1.05;
 }
@@ -490,7 +494,7 @@ body {
 
 .mission-copy {
   max-width: 470px;
-  font-family: halvetica;
+  font-family: helvetica;
   font-size: 1.08rem;
   line-height: 1.45;
 }
@@ -537,7 +541,7 @@ body {
 
 .product-copy h3 {
   margin-bottom: 0.75rem;
-  font-family: halvetica;
+  font-family: helvetica;
   font-size: 0.9rem;
   font-weight: 400;
 }
@@ -547,13 +551,13 @@ body {
 }
 
 #page4 {
-  min-height: 70vh;
+  min-height: 86vh;
   width: 100%;
 }
 
 #messages {
   width: 100%;
-  padding: 4vw 2vw;
+  padding: 4vw 1.2vw 5vw;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -574,23 +578,33 @@ body {
 }
 
 .message-row {
-  margin-top: 3.2rem;
-  display: flex;
+  width: 100%;
+  margin-top: 4.1rem;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(180px, 1fr));
   align-items: center;
   justify-content: space-between;
-  font-family: halvetica;
+  font-family: helvetica;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.message-row::-webkit-scrollbar {
+  display: none;
 }
 
 .message-row article {
-  min-height: 120px;
+  min-height: 150px;
   cursor: pointer;
-  padding: 0 10vw;
+  padding: 0 2.2vw;
+  outline: none;
 }
 
 .message-row p {
   margin-top: 1.8rem;
-  font-size: 1.65rem;
-  line-height: 0.95;
+  font-size: 1.05rem;
+  line-height: 1.35;
 }
 
 .message-row .active .message-dot {
@@ -602,17 +616,48 @@ body {
   border: 1px solid #111;
 }
 
+.message-underline {
+  width: 128px;
+  height: 18px;
+  margin-top: 0.75rem;
+  opacity: 0;
+  overflow: visible;
+}
+
+.message-underline path {
+  fill: none;
+  stroke: #111;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-dasharray: 140;
+  stroke-dashoffset: 140;
+}
+
+.message-row .active .message-underline {
+  opacity: 1;
+}
+
+.message-row .active .message-underline path {
+  animation: drawMessageUnderline 0.55s ease forwards;
+}
+
 #messages h2 {
-  max-width: 1120px;
-  margin: 5.5rem auto 0;
+  max-width: 1450px;
+  margin: 4.8rem auto 0;
   text-align: center;
   font-family: futura;
-  font-size: 5.1rem;
+  font-size: clamp(3rem, 5.8vw, 7.4rem);
   font-weight: 500;
-  line-height: 0.94;
+  line-height: 0.96;
   text-transform: uppercase;
   letter-spacing: 0;
   margin-bottom: 30px;
+}
+
+@keyframes drawMessageUnderline {
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 #messages button {
@@ -627,7 +672,7 @@ body {
 
 #messages #extra {
   margin-top: 30px;
-  font-family: halvetica;
+  font-family: helvetica;
   font-size: 0.8rem;
   width: 25%;
   text-align: center;
@@ -651,7 +696,7 @@ body {
 .impact-copy {
   max-width: 390px;
   padding-top: 1rem;
-  font-family: halvetica;
+  font-family: helvetica;
   font-size: 1rem;
   line-height: 1.45;
 }
@@ -717,7 +762,7 @@ body {
 
 .footer-column a {
   color: #111;
-  font-family: halvetica;
+  font-family: helvetica;
   font-size: 0.95rem;
   line-height: 1.2;
   text-transform: none;
@@ -765,261 +810,194 @@ body {
   grid-column: 2;
   margin-top: 2rem;
   color: #333;
-  font-family: halvetica;
+  font-family: helvetica;
   font-size: 0.86rem;
   line-height: 1.45;
   text-align: center;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   #navbar {
-    width: 100%;
-    padding: 3vw 5vw;
-  }
-
-  #navleft {
-    height: 40px;
-    width: 75px;
-    overflow: hidden;
-  }
-
-  #navbar #navleft img {
-    height: 100%;
-    width: 100%;
-    display: block;
-    object-fit: contain;
-    object-position: top left;
+    padding: 18px 20px;
   }
 
   #navbar #links {
     display: none;
   }
 
-  #navbar #icons {
-    min-width: 100px;
-    height: 35px;
-    padding: 2px 5px;
-  }
-
-  #navbar #icons span {
-    font-size: 20px;
-    font-weight: 100;
+  #navbar #navright {
+    gap: 0;
   }
 
   #menu-overlay {
-    padding: 4vh 8vw;
-    display: flex;
+    padding: 4rem 5vw 2rem;
     align-items: flex-end;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-direction: column;
   }
 
   #menu-content {
-    gap: 1vh;
+    gap: 0.8rem;
   }
 
   .menu-link {
-    font-size: 12vw;
-    padding-bottom: 5px;
+    font-size: 5rem;
   }
 
   #menu-footer {
-    gap: 8vw;
-    margin-top: 45px;
+    width: 100%;
+    gap: 2rem;
+    justify-content: space-between;
   }
 
   #page1 {
-    min-height: 60vh;
+    min-height: auto;
     padding: 0 3.5vw;
-    margin-top: 180px;
+    margin-top: 138px;
   }
 
   #page1 h1 {
-    font-size: 20vw;
+    font-size: 7.4rem;
+    line-height: 0.84;
   }
 
   #image-container {
-    height: 28vh;
-    margin-top: 15px;
+    height: 54vh;
+    min-height: 360px;
+    margin-top: 1.2rem;
   }
 
   #intro {
-    padding: 1rem 10vw;
-    margin-top: -60px;
-    margin-bottom: 50px;
+    min-height: auto;
+    padding: 4.5rem 5vw 3.5rem;
+    margin: 0;
   }
 
   #intro h2 {
     width: 100%;
-    font-size: 10vw;
+    font-size: 4.6rem;
+  }
+
+  #intro p {
+    max-width: 520px;
+    line-height: 1.35;
   }
 
   #page2 {
     height: auto;
-    padding: 1vw 3.5vw;
+    padding: 1rem 3.5vw 0;
   }
 
   #page2 #elem-title {
-    margin-bottom: 10px;
-  }
-
-  #page2 #elem-title span {
-    font-size: 0.7rem;
+    margin: 0 0 1rem;
   }
 
   #page2 #elem-con {
     height: auto;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 3vw;
+    gap: 1rem;
   }
 
   #page2 #elem-con .elem {
-    height: 70vh;
     width: 100%;
+    height: 72vh;
+    min-height: 560px;
   }
 
   .elem .dets {
-    height: 45px;
-    width: 80%;
-    left: 10%;
-    margin-top: -22.5px;
-    font-size: 0.8rem;
-  }
-
-  .elem .dets:hover {
-    height: 245px;
-  }
-
-  .shop-row {
-    height: 45px;
-    padding: 0 6vw;
-    gap: 12px;
-  }
-
-  .shop-preview {
-    gap: 12px;
-    padding: 16px 20px 20px;
-  }
-
-  #page2 #elem-con .elem .shop-preview img {
-    height: 105px;
-  }
-
-  .shop-preview span {
-    font-size: 0.68rem;
-  }
-
-  .dot,
-  .message-dot {
-    width: 7px;
-    height: 7px;
+    width: 78%;
+    left: 11%;
   }
 
   #mission {
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    padding: 10vw 2vw;
+    gap: 2rem;
+    padding: 5.5rem 3.5vw;
   }
 
   #mission h2 {
-    text-align: center;
-    font-size: 2.2rem;
+    max-width: 720px;
+    font-size: 4rem;
   }
 
   .mission-copy {
-    text-align: center;
-    padding: 2vw 4vw;
-    font-size: 1rem;
-  }
-
-  .mission-copy p+p {
-    margin-top: 1rem;
+    max-width: 620px;
   }
 
   #page3 {
-    min-height: 80vh;
+    min-height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3rem 1rem;
+    padding: 2rem 3.5vw 5rem;
   }
 
   .child {
-    height: 30vh;
-    width: 38vw;
-    margin-bottom: 0px;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    margin: 0;
   }
 
-  .product-copy h3 {
-    font-size: 0.8rem;
-  }
-
-  .product-copy p {
-    font-size: 0.8rem;
-  }
-
-  #cursor {
-    height: 100px;
-    width: 100px;
+  .child img {
+    height: auto;
+    aspect-ratio: 1 / 1;
   }
 
   #messages {
-    padding: 3rem 4vw 5rem;
+    padding: 4rem 3.5vw 5rem;
+  }
+
+  .message-rule {
+    margin-top: 0;
   }
 
   .message-row {
-    margin-top: 2rem;
-    grid-template-columns: repeat(4, minmax(170px, 1fr));
-    gap: 2rem;
-    overflow-x: auto;
+    grid-template-columns: repeat(6, minmax(180px, 1fr));
+    gap: 1.6rem;
     padding-bottom: 1rem;
   }
 
-  .message-row p {
-    font-size: 1.2rem;
+  .message-row article {
+    padding: 0;
   }
 
   #messages h2 {
-    margin-top: 3rem;
-    font-size: 2.5rem;
-    line-height: 0.96;
-  }
-
-  #messages button {
-    padding: 1.7vw 5vw;
-    font-size: 0.6rem;
+    max-width: 760px;
+    font-size: 4.25rem;
   }
 
   #messages #extra {
-    font-size: 0.8rem;
-    width: 55%;
+    width: min(520px, 82vw);
   }
 
   #impact {
     min-height: auto;
-    padding: 3vw 4vw;
+    padding: 4rem 3.5vw;
     grid-template-columns: 1fr;
     gap: 1rem;
   }
 
   .impact-copy {
-    max-width: none;
+    max-width: 620px;
     margin-bottom: 1.5rem;
   }
 
   .impact-image {
-    height: 62vh;
-    min-height: 460px;
+    height: 58vh;
+    min-height: 420px;
   }
 
   #footer {
-    padding: 5rem 4vw 2rem;
+    min-height: auto;
+    padding: 5rem 3.5vw 2rem;
   }
 
   .footer-top {
     min-height: auto;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem 2rem;
+    gap: 2.5rem 2rem;
   }
 
   .footer-logo {
@@ -1029,7 +1007,7 @@ body {
   }
 
   .footer-logo img {
-    width: 190px;
+    width: 210px;
     min-width: 0;
   }
 
@@ -1037,17 +1015,8 @@ body {
     grid-row: 2;
   }
 
-  .footer-column-right {
-    align-items: flex-end;
-    text-align: right;
-  }
-
-  .footer-column a {
-    font-size: 0.86rem;
-  }
-
   .footer-bottom {
-    margin-top: 2rem;
+    margin-top: 3rem;
     grid-template-columns: 1fr;
   }
 
@@ -1063,8 +1032,267 @@ body {
   }
 
   .footer-bottom p {
-    max-width: 340px;
+    max-width: 560px;
     margin-top: 1.5rem;
     text-align: left;
+  }
+}
+
+@media (max-width: 600px) {
+  #navbar {
+    padding: 15px 18px;
+  }
+
+  #navleft {
+    height: 42px;
+    width: 78px;
+  }
+
+  #navbar #navleft img {
+    object-position: top left;
+  }
+
+  #navbar #icons {
+    min-width: 82px;
+    height: 34px;
+    padding: 2px 4px;
+  }
+
+  #navbar #icons span {
+    font-size: 20px;
+  }
+
+  #menu-overlay {
+    padding: 4.5rem 6vw 2rem;
+  }
+
+  .menu-link {
+    font-size: 3.8rem;
+    line-height: 0.95;
+  }
+
+  #menu-footer {
+    flex-wrap: wrap;
+    gap: 1.6rem 2rem;
+  }
+
+  .menu-footer-col {
+    min-width: 42%;
+  }
+
+  #page1 {
+    padding: 0 3.5vw;
+    margin-top: 118px;
+  }
+
+  #page1 h1 {
+    font-size: 4.65rem;
+    line-height: 0.86;
+  }
+
+  #image-container {
+    height: 44vh;
+    min-height: 310px;
+    margin-top: 1rem;
+  }
+
+  #intro {
+    padding: 3.5rem 6vw 3rem;
+  }
+
+  #intro h2 {
+    font-size: 2.8rem;
+    line-height: 0.98;
+  }
+
+  #intro p {
+    margin-top: 1.4rem;
+    font-size: 0.95rem;
+  }
+
+  #page2 {
+    padding: 0 3.5vw;
+  }
+
+  #page2 #elem-title span {
+    font-size: 0.66rem;
+  }
+
+  #page2 #elem-con {
+    gap: 0.9rem;
+  }
+
+  #page2 #elem-con .elem {
+    height: 66vh;
+    min-height: 480px;
+  }
+
+  .elem .dets {
+    height: 46px;
+    width: 86%;
+    left: 7%;
+    margin-top: -23px;
+    font-size: 0.72rem;
+  }
+
+  .elem .dets:hover,
+  .elem .dets:focus-within,
+  .elem .dets.is-open {
+    height: 250px;
+  }
+
+  .shop-row {
+    height: 46px;
+    grid-template-columns: auto auto minmax(0, 1fr) auto;
+    gap: 10px;
+    padding: 0 18px;
+  }
+
+  .shop-row > span:nth-child(2) {
+    margin-right: 0;
+  }
+
+  .elem .dets strong {
+    font-size: 0.78rem;
+  }
+
+  .shop-preview {
+    gap: 12px;
+    padding: 16px 18px 20px;
+  }
+
+  #page2 #elem-con .elem .shop-preview img {
+    height: 108px;
+  }
+
+  .shop-preview span {
+    font-size: 0.68rem;
+  }
+
+  .dot,
+  .message-dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  #mission {
+    padding: 4rem 3.5vw;
+    gap: 1.5rem;
+  }
+
+  #mission h2 {
+    font-size: 2.6rem;
+    line-height: 0.98;
+  }
+
+  .mission-copy {
+    font-size: 0.98rem;
+  }
+
+  .mission-copy p+p {
+    margin-top: 1rem;
+  }
+
+  #page3 {
+    gap: 2.2rem 0.8rem;
+    padding: 1rem 3.5vw 4rem;
+  }
+
+  .product-copy {
+    margin-top: 0.8rem;
+  }
+
+  .product-copy h3 {
+    font-size: 0.72rem;
+    line-height: 1.15;
+  }
+
+  .product-copy p {
+    font-size: 0.72rem;
+  }
+
+  #cursor {
+    display: none;
+  }
+
+  #messages {
+    padding: 3.5rem 3.5vw 4rem;
+  }
+
+  .message-rule {
+    font-size: 0.68rem;
+    gap: 1.5rem;
+  }
+
+  .message-row {
+    margin-top: 2rem;
+    grid-template-columns: repeat(6, minmax(158px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .message-row article {
+    min-height: 116px;
+  }
+
+  .message-row p {
+    font-size: 0.92rem;
+    line-height: 1.28;
+  }
+
+  .message-underline {
+    width: 104px;
+  }
+
+  #messages h2 {
+    margin-top: 2.4rem;
+    font-size: 2.75rem;
+    line-height: 0.98;
+  }
+
+  #messages button {
+    padding: 0.9rem 2rem;
+    font-size: 0.64rem;
+  }
+
+  #messages #extra {
+    width: 92%;
+    font-size: 0.78rem;
+  }
+
+  #impact {
+    padding: 3.5rem 3.5vw;
+  }
+
+  .impact-image {
+    height: 52vh;
+    min-height: 340px;
+  }
+
+  #footer {
+    padding: 4rem 4vw 2rem;
+  }
+
+  .footer-top {
+    gap: 2rem;
+  }
+
+  .footer-logo img {
+    width: 180px;
+  }
+
+  .footer-column a {
+    font-size: 0.86rem;
+  }
+}
+
+@media (max-width: 390px) {
+  #page1 h1 {
+    font-size: 4.2rem;
+  }
+
+  #intro h2,
+  #mission h2,
+  #messages h2 {
+    font-size: 2.35rem;
   }
 }

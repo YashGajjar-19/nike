@@ -63,8 +63,8 @@ function navbarAnimation() {
     },
   });
 
-  var menu = document.querySelector("#menuBar");
-  var isMenuOpen = false;
+  const menu = document.querySelector("#menuBar");
+  let isMenuOpen = false;
 
   menu.addEventListener("click", function () {
     if (isMenuOpen) {
@@ -123,7 +123,7 @@ function navbarAnimation() {
           stagger: 0.07,
           ease: "power3.out",
           delay: 0.25,
-        },
+        }
       );
 
       gsap.fromTo(
@@ -136,7 +136,7 @@ function navbarAnimation() {
           stagger: 0.07,
           ease: "power3.out",
           delay: 0.4,
-        },
+        }
       );
 
       gsap.to("#navbar #links", {
@@ -259,13 +259,69 @@ function scrollRevealAnimations() {
     start: "top 72%",
   });
 
-  revealAnimation(".footer-column, .footer-logo, .footer-legal, .footer-bottom p", "#footer", {
-    y: 70,
-    stagger: 0.12,
-    start: "top 78%",
-  });
+  revealAnimation(
+    ".footer-column, .footer-logo, .footer-legal, .footer-bottom p",
+    "#footer",
+    {
+      y: 70,
+      stagger: 0.12,
+      start: "top 78%",
+    }
+  );
 }
 scrollRevealAnimations();
+
+function messageSelectorAnimation() {
+  const messageItems = document.querySelectorAll(".message-row article");
+  const quote = document.querySelector("#message-quote");
+
+  if (!messageItems.length || !quote) return;
+
+  function setActiveMessage(item) {
+    if (item.classList.contains("active")) return;
+
+    const message = item.dataset.message;
+    if (!message) return;
+
+    messageItems.forEach((messageItem) => {
+      messageItem.classList.remove("active");
+    });
+    item.classList.add("active");
+
+    gsap
+      .timeline()
+      .to(quote, {
+        y: 26,
+        opacity: 0,
+        duration: 0.22,
+        ease: "power2.in",
+      })
+      .set(quote, {
+        textContent: message.toUpperCase(),
+        y: -22,
+      })
+      .to(quote, {
+        y: 0,
+        opacity: 1,
+        duration: 0.42,
+        ease: "power3.out",
+      });
+  }
+
+  messageItems.forEach((item) => {
+    item.addEventListener("mouseenter", () => setActiveMessage(item));
+    item.addEventListener("focus", () => setActiveMessage(item));
+    item.addEventListener("click", () => setActiveMessage(item));
+
+    item.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        setActiveMessage(item);
+      }
+    });
+  });
+}
+messageSelectorAnimation();
 
 function cursorAnimation() {
   const cursor = document.querySelector("#cursor");
@@ -293,20 +349,22 @@ function cursorAnimation() {
     moveY(event.clientY);
   });
 
-  const colors = ["#e4e4e4ff"];
-
   document.querySelectorAll(".child").forEach(function (child) {
-    child.addEventListener("mouseenter", function () {  
-      gsap.to("#cursor", { 
-        transform: "translate(-50%,-50%) scale(1)",
-      })
-    })
+    child.addEventListener("mouseenter", function () {
+      gsap.to(cursor, {
+        scale: 1,
+        duration: 0.25,
+        ease: "power2.out",
+      });
+    });
 
     child.addEventListener("mouseleave", function () {
-      gsap.to("#cursor", { 
-        transform: "translate(-50%,-50%) scale(0)",
-      })
-    })
-  })
+      gsap.to(cursor, {
+        scale: 0,
+        duration: 0.25,
+        ease: "power2.out",
+      });
+    });
+  });
 }
 cursorAnimation();
